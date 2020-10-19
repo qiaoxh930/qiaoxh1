@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a.dao.CommentDao">
+
+    <select id="queryId" resultType="com.a.entity.Comment">
+        select id ,comments comment,likes,jssues_id jssuesId from t_comments where id=#{id}
+    </select>
+    <update id="updateLikes">
+        update t_comments set likes=#{likes} where id=#{id}
+    </update>
+    <insert id="insertComment">
+        insert into t_comments (comments,likes,jssues_id) values (#{comment},#{likes},#{jssuesId})
+    </insert>
+
+
+</mapper>

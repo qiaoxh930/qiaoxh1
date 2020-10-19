@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a.dao.JssuesDao">
+    <resultMap id="jssues" type="com.a.entity.Jssues">
+        <id column="jId" property="id"/>
+        <result column="jJssues" property="jssues"/>
+        <result column="jLikes" property="likes"/>
+        <result column="jCommentNumber" property="commentNumber"/>
+        <collection property="commentList" ofType="com.a.entity.Comment">
+            <id column="cId" property="id"/>
+            <result column="cComment" property="comment"/>
+            <result column="cLikes" property="likes"/>
+        </collection>
+    </resultMap>
+    <select id="queryOne" resultMap="jssues">
+        select j.id jId,j.jssues jJssues ,j.likes jLikes,j.comment_number jCommentNumber,c.id cId,c.comments cComment ,c.likes cLikes
+        from t_jssues j left join t_comments c on c.jssues_id=j.id where j.id=1
+    </select>
+    <update id="updateLike" >
+        update t_jssues set likes =#{likes},comment_number=#{commentNumber} where id=#{id}
+    </update>
+    <select id="queryId" resultMap="jssues">
+        select j.id jId,j.jssues jJssues ,j.likes jLikes,j.comment_number jCommentNumber,c.id cId,c.comments cComment ,c.likes cLikes
+        from t_jssues j left join t_comments c on c.jssues_id=j.id where j.id=#{id}
+    </select>
+    <select id="queryJssues" resultMap="jssues">
+        select j.id jId,j.jssues jJssues ,j.likes jLikes,j.comment_number jCommentNumber,c.id cId,c.comments cComment ,c.likes cLikes
+        from t_jssues j left join t_comments c on c.jssues_id=j.id where j.jssues like '%'||#{jssues}||'%'
+    </select>
+
+</mapper>

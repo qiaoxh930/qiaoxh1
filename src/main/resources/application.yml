@@ -1,0 +1,21 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /xiaozhi
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+mybatis:
+  type-alaiases-package: com.a.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    cache-enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.a.dao:  DEBUG

@@ -1,0 +1,11 @@
+{
+  "groups": [],
+  "properties": [
+    {
+      "name": "mybatis.type-alaiases-package",
+      "type": "java.lang.String",
+      "description": "Description for mybatis.type-alaiases-package."
+    }
+  ],
+  "hints": []
+}
